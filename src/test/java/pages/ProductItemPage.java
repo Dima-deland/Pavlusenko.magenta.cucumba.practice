@@ -1,23 +1,17 @@
 package pages;
 
-import components.Header;
 import context.TestContext;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import utils.ConfigurationReader;
 
 public class ProductItemPage extends BasePage {
     public ProductItemPage(TestContext context) {
         super(context);
-
-        context.wait.until(ExpectedConditions.visibilityOf(addToCartButton));
-        context.wait.until(ExpectedConditions.visibilityOf(chooseColorButton));
-        context.wait.until(ExpectedConditions.visibilityOf(chooseSizeButton));
     }
-    Header header;
 
-    // Page elements
+    //elements---------------------------------------------------------
+
     @FindBy(xpath = "//*[@id='product-addtocart-button']")
     private WebElement addToCartButton;
 
@@ -27,19 +21,22 @@ public class ProductItemPage extends BasePage {
     @FindBy(xpath = "//div[contains(@id, 'option-label-color')]")
     private WebElement chooseColorButton;
 
-    // Page actions
+    //actions---------------------------------------------------------
 
     public ProductItemPage clickAddToCartButton() {
+        context.wait.until(ExpectedConditions.elementToBeClickable(addToCartButton));
         addToCartButton.click();
         return new ProductItemPage(context);
     }
 
     public ProductItemPage clickChooseSizeButton() {
+        context.wait.until(ExpectedConditions.elementToBeClickable(chooseSizeButton));
         chooseSizeButton.click();
         return new ProductItemPage(context);
     }
 
     public ProductItemPage clickChooseColorButton() {
+        context.wait.until(ExpectedConditions.elementToBeClickable(chooseColorButton));
         chooseColorButton.click();
         return new ProductItemPage(context);
     }

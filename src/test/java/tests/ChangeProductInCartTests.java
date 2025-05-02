@@ -7,6 +7,7 @@ import org.junit.jupiter.api.*;
 import pages.CartPage;
 import pages.ProductItemPage;
 import utils.ConfigurationReader;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -23,7 +24,7 @@ public class ChangeProductInCartTests extends BaseTest {
         Allure.description("Test is checking adding product to Cart");
 
         Allure.step("1. Open Product page");
-        context.driver.get(ConfigurationReader.get("url") + "/argus-all-weather-tank.html");
+        context.driver.get(ConfigurationReader.get("url") + ConfigurationReader.get("itempage"));
 
         Allure.step("2. Accept cookies");
         CookiesModal cookies = new CookiesModal(context);
@@ -42,11 +43,11 @@ public class ChangeProductInCartTests extends BaseTest {
         CartPage cartPage = new CartPage(context);
 
         Allure.step("5. Check number of products in Cart");
-        assertEquals(1,cartPage.countProductItems());
+        assertEquals(1, cartPage.countProductItems());
 
         Allure.step("6. Check value of Cart counter in header");
         Header header = new Header(context);
-        context.wait.until(driver -> header.getCartCounterValue()>0);
+        context.wait.until(driver -> header.getCartCounterValue() > 0);
         assertEquals(1, header.getCartCounterValue());
 
     }
@@ -54,21 +55,21 @@ public class ChangeProductInCartTests extends BaseTest {
     @Test
     @DisplayName("Update product quantity in cart test")
     @Order(2)
-    public void updateQuantityInCart() throws InterruptedException {
+    public void updateQuantityInCart()  {
         CartPage cartPage = new CartPage(context);
 
         Allure.step("1. Update quantity of products in Cart");
         cartPage
                 .setProductQuantityField(2);
-                Thread.sleep(300);
-                cartPage.clickUpdateShoppingCartButton();
+
+        cartPage.clickUpdateShoppingCartButton();
 
         Allure.step("2. Check number of products in Cart");
-        assertEquals(2,cartPage.getProductQuantityField());
+        assertEquals(2, cartPage.getProductQuantityField());
 
         Allure.step("3. Check value of Cart counter in header");
         Header header = new Header(context);
-        context.wait.until(driver -> header.getCartCounterValue()>1);
+        context.wait.until(driver -> header.getCartCounterValue() > 1);
         assertEquals(2, header.getCartCounterValue());
 
     }

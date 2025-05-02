@@ -15,6 +15,7 @@ public class CartPage extends BasePage {
     }
 
     //elements---------------------------------------------------------
+
     @FindBy(xpath = "//div[@class='cart-empty']")
     private WebElement cartEmptyInfoText;
 

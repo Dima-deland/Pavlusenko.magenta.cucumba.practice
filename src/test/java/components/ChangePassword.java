@@ -3,11 +3,8 @@ package components;
 import context.TestContext;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.BasePage;
-import pages.CreateAccountPage;
 import pages.LoginPage;
-import pages.MyAccountPage;
 
 public class ChangePassword extends BasePage {
     public ChangePassword(TestContext context) {

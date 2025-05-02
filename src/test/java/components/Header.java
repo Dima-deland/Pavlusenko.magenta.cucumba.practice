@@ -12,26 +12,28 @@ public class Header extends BasePage {
         super(context);
     }
 
-    //elements
+    //elements---------------------------------------------------------
+
     @FindBy(xpath = "//*[@class='counter-number']")
     private WebElement cartCounter;
 
     @FindBy(xpath = "//div[@class='panel header']/ul[@class='header links']//a[contains(@href, 'create')]")
     private WebElement createAnAccountLink;
 
-    //actions
+    //actions---------------------------------------------------------
+
     public int getCartCounterValue() {
-        if (!cartCounter.isDisplayed())return 0;
+        if (!cartCounter.isDisplayed()) return 0;
         context.wait.until(ExpectedConditions.visibilityOf(cartCounter));
         String counterText = cartCounter.getText();
-            return Integer.parseInt(counterText);
-        }
+        return Integer.parseInt(counterText);
+    }
 
-        public CreateAccountPage createAnAccountLinkClick(){
+    public CreateAccountPage createAnAccountLinkClick() {
         createAnAccountLink.click();
         return new CreateAccountPage(context);
-        }
     }
+}
 
 
 

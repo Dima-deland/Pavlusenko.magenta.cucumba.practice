@@ -1,9 +1,13 @@
 package tests;
 
-import components.*;
-import pages.*;
+import components.ChangePassword;
+import components.CookiesModal;
+import components.Header;
+import components.Notification;
 import io.qameta.allure.Allure;
 import org.junit.jupiter.api.*;
+import pages.CreateAccountPage;
+import pages.MyAccountPage;
 import utils.ConfigurationReader;
 
 import java.time.LocalDateTime;

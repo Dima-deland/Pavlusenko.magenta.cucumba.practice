@@ -12,8 +12,12 @@ public class Notification extends BasePage {
         super(context);
     }
 
+    //elements---------------------------------------------------------
+
     @FindBy(xpath = "//div[@role='alert']")
     private WebElement notification;
+
+    //actions---------------------------------------------------------
 
     public String getNotificationText() {
         context.wait.until(ExpectedConditions.visibilityOf(notification));

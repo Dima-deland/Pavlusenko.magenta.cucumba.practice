@@ -23,7 +23,8 @@ public class ConfigurationReader {
             throw new RuntimeException(e);
         }
     }
-    public static String get(String keyName){
+
+    public static String get(String keyName) {
         return properties.getProperty(keyName);
     }
 

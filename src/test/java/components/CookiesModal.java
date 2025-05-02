@@ -13,12 +13,14 @@ public class CookiesModal extends BasePage {
     }
 
 
-    //elements
-    @FindBy(xpath = "//button[@id='accept-btn']")
-    private  WebElement acceptButton;
+    //elements---------------------------------------------------------
 
-    //actions
-    public void clickAcceptCookiesButton(){
+    @FindBy(xpath = "//button[@id='accept-btn']")
+    private WebElement acceptButton;
+
+    //actions---------------------------------------------------------
+
+    public void clickAcceptCookiesButton() {
         acceptButton.click();
     }
 }

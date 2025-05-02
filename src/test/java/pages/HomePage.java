@@ -13,9 +13,15 @@ public class HomePage extends BasePage {
         context.wait.until(ExpectedConditions.visibilityOf(homePageTitle));
     }
 
+    //elements---------------------------------------------------------
+
     @FindBy(xpath = "//span[@data-ui-id='page-title-wrapper']")
     private WebElement homePageTitle;
 
-    public String getPageTitleText() {return homePageTitle.getText();}
+    //actions---------------------------------------------------------
+
+    public String getPageTitleText() {
+        return homePageTitle.getText();
+    }
 }
 

@@ -11,6 +11,7 @@ public class MyAccountPage extends BasePage {
     }
 
     //elements---------------------------------------------------------
+
     @FindBy(xpath = "//input[@id='firstname']")
     private WebElement firstNameInputField;
 
@@ -44,7 +45,7 @@ public class MyAccountPage extends BasePage {
 
     }
 
-    public MyAccountPage fillField (String fieldName, String value){
+    public MyAccountPage fillField(String fieldName, String value) {
         switch (fieldName) {
             case "firstName":
                 firstNameInputField.sendKeys(value);

@@ -13,8 +13,12 @@ public class ProductItem extends BasePage {
         super(context);
     }
 
+    //elements---------------------------------------------------------
+
     @FindBy(xpath = "//div[@class='product-item-info']")
     private WebElement productItemCard;
+
+    //actions---------------------------------------------------------
 
     public ProductItemPage clickProductItemCard() {
         productItemCard.click();
