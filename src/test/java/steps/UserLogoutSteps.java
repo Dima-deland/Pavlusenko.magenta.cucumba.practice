@@ -5,6 +5,7 @@ import context.TestContext;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class UserLogoutSteps {
@@ -19,6 +20,7 @@ public class UserLogoutSteps {
 
     @When("user logs out")
     public void userLogsout (){
+        step("Click 'Options' then 'Sign Out' buttons");
         header
                 .clickUserOptionsButton()
                 .clickSignOutOption();
@@ -26,6 +28,7 @@ public class UserLogoutSteps {
 
     @Then("user is logged out")
     public void check () {
+        step("Check that User is logged out");
         assertTrue(header.signInLink.isDisplayed());
     }
 

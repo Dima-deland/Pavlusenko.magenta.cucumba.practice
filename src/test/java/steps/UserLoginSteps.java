@@ -6,6 +6,7 @@ import context.TestContext;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.qameta.allure.Allure;
 import pages.LoginPage;
 
 import static io.qameta.allure.Allure.step;
@@ -35,17 +36,22 @@ public class UserLoginSteps {
     @Then("user is logged in")
     public void checkUserIsLoggedIn() {
         Header header = new Header(context);
+        step("Check that user is logged in");
         assertTrue(header.userOptionsButton.isDisplayed());
     }
 
     @Then("{string} is shown")
     public void isShown(String expectedMessage) {
         Notification notification = new Notification(context);
+        step("Check that notification is shown");
+        Allure.addAttachment("Expected message",expectedMessage);
         assertEquals(expectedMessage, notification.getNotificationText().trim());
     }
 
     @Then("{string} that  {string} field is required or incorrect is shown")
     public void thatFieldIsRequiredIsShown(String expectedErrorMessage, String fieldName) {
+        step("Check that error message is shown");
+
         if (fieldName == "Email") {
             assertTrue(loginPage.emailFieldIsRequiredMessage.isDisplayed());
             assertFalse(loginPage.passwordFieldIsRequiredMessage.isDisplayed());
