@@ -5,8 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class ProductItemPage extends BasePage {
-    public ProductItemPage(TestContext context) {
+public class ProductPage extends BasePage {
+    public ProductPage(TestContext context) {
         super(context);
     }
 
@@ -23,21 +23,21 @@ public class ProductItemPage extends BasePage {
 
     //actions---------------------------------------------------------
 
-    public ProductItemPage clickAddToCartButton() {
+    public ProductPage clickAddToCartButton() {
         context.wait.until(ExpectedConditions.elementToBeClickable(addToCartButton));
         addToCartButton.click();
-        return new ProductItemPage(context);
+        return this;
     }
 
-    public ProductItemPage clickChooseSizeButton() {
+    public ProductPage clickChooseSizeButton() {
         context.wait.until(ExpectedConditions.elementToBeClickable(chooseSizeButton));
         chooseSizeButton.click();
-        return new ProductItemPage(context);
+        return this;
     }
 
-    public ProductItemPage clickChooseColorButton() {
+    public ProductPage clickChooseColorButton() {
         context.wait.until(ExpectedConditions.elementToBeClickable(chooseColorButton));
         chooseColorButton.click();
-        return new ProductItemPage(context);
+        return this;
     }
 }

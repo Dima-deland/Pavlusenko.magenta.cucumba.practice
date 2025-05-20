@@ -20,9 +20,11 @@ public class Notification extends BasePage {
     //actions---------------------------------------------------------
 
     public String getNotificationText() {
-        context.wait.until(ExpectedConditions.visibilityOf(notification));
+        // all notifications end with "."
+        context.wait.until(ExpectedConditions.textToBePresentInElement(notification,"."));
         return notification.getText();
     }
+
 }
 
 

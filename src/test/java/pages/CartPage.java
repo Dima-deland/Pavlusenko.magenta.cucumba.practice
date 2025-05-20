@@ -45,31 +45,34 @@ public class CartPage extends BasePage {
     }
 
     public CartPage setProductQuantityField(int quantity) {
+        context.wait.until(ExpectedConditions.elementToBeClickable(productQuantityField));
         productQuantityField.clear();
         productQuantityField.sendKeys(String.valueOf(quantity));
-        return new CartPage(context);
+        return this;
     }
 
     public int getProductQuantityField() {
-        String value = productQuantityField.getAttribute("value");
-        return Integer.parseInt(value);
+        context.wait.until(ExpectedConditions.attributeToBeNotEmpty(productQuantityField,"value"));
+        String value = productQuantityField.getCssValue("value");
+        if (!value.isEmpty()) return Integer.parseInt(value);
+        else return 0;
     }
 
     public CartPage clickUpdateShoppingCartButton() {
         updateShoppingCartButton.click();
         context.wait.until(ExpectedConditions.visibilityOf(updateShoppingCartButton));
-        return new CartPage(context);
+        return this;
     }
 
     public CartPage clickRemoveItemButton() {
         context.wait.until(ExpectedConditions.elementToBeClickable(removeItemButton));
         removeItemButton.click();
-        return new CartPage(context);
+        return this;
     }
 
-    public WebElement getCartEmptyInfoText() {
+    public String getCartEmptyInfoText() {
         context.wait.until(ExpectedConditions.visibilityOf(cartEmptyInfoText));
-        return cartEmptyInfoText;
+        return cartEmptyInfoText.getText();
     }
 
 }

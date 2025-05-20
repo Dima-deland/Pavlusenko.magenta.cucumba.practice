@@ -11,7 +11,6 @@ public class CreateAccountPage extends BasePage {
         context.wait.until(ExpectedConditions.titleIs("Create New Customer Account"));
     }
 
-
     //elements---------------------------------------------------------
 
     @FindBy(xpath = "//input[@id='firstname']")
@@ -35,31 +34,42 @@ public class CreateAccountPage extends BasePage {
 
     //actions----------------------------------------------------------
 
-    public CreateAccountPage fillField(String fieldName, String value) {
-        switch (fieldName) {
-            case "firstName":
-                firstNameInputField.sendKeys(value);
-                break;
-            case "lastName":
-                lastNameInputField.sendKeys(value);
-                break;
-            case "email":
-                emailInputField.sendKeys(value);
-                break;
-            case "password":
-                passwordField.sendKeys(value);
-                break;
-            case "confirmPassword":
-                confirmPasswordField.sendKeys(value);
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown field: " + fieldName);
-        }
-        return new CreateAccountPage(context);
+    public CreateAccountPage fillFirstNameField(String value) {
+        context.wait.until(ExpectedConditions.elementToBeClickable(firstNameInputField));
+        firstNameInputField.clear();
+        firstNameInputField.sendKeys(value);
+        return this;
     }
 
-    public MyAccountPage clickCreateAnAccountButton() {
+    public CreateAccountPage fillLastNameField(String value) {
+        context.wait.until(ExpectedConditions.elementToBeClickable(lastNameInputField));
+        lastNameInputField.clear();
+        lastNameInputField.sendKeys(value);
+        return this;
+    }
+
+    public CreateAccountPage fillEmailInputField(String value) {
+        context.wait.until(ExpectedConditions.elementToBeClickable(emailInputField));
+        emailInputField.clear();
+        emailInputField.sendKeys(value);
+        return this;
+    }
+
+    public CreateAccountPage fillPasswordField(String value) {
+        context.wait.until(ExpectedConditions.elementToBeClickable(passwordField));
+        passwordField.clear();
+        passwordField.sendKeys(value);
+        return this;
+    }
+
+    public CreateAccountPage fillConfirmPasswordField(String value) {
+        context.wait.until(ExpectedConditions.elementToBeClickable(confirmPasswordField));
+        confirmPasswordField.clear();
+        confirmPasswordField.sendKeys(value);
+        return this;
+    }
+
+    public void clickCreateAnAccountButton() {
         createAnAccountButton.click();
-        return new MyAccountPage(context);
     }
 }

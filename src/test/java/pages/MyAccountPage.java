@@ -1,9 +1,9 @@
 package pages;
 
-import components.ChangePassword;
 import context.TestContext;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class MyAccountPage extends BasePage {
     public MyAccountPage(TestContext context) {
@@ -27,35 +27,45 @@ public class MyAccountPage extends BasePage {
     @FindBy(xpath = "//button[@class='action save primary']")
     private WebElement saveButton;
 
+    @FindBy(xpath = "//div[@class='box box-information']//p")
+    private WebElement contactInformation;
+
     //actions---------------------------------------------------------
 
     public MyAccountPage clickSaveButton() {
         saveButton.click();
-        return new MyAccountPage(context);
+        return this;
     }
 
     public MyAccountPage clickEditLink() {
+        context.wait.until(ExpectedConditions.elementToBeClickable(editLink));
         editLink.click();
-        return new MyAccountPage(context);
+        return this;
     }
 
-    public ChangePassword clickChangePasswordLink() {
+    public MyAccountPage clickChangePasswordLink() {
         chnagePasswordLink.click();
-        return new ChangePassword(context);
-
+        return this;
     }
 
-    public MyAccountPage fillField(String fieldName, String value) {
-        switch (fieldName) {
-            case "firstName":
-                firstNameInputField.sendKeys(value);
-                break;
-            case "lastName":
-                lastNameInputField.sendKeys(value);
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown field: " + fieldName);
-        }
-        return new MyAccountPage(context);
+    public String getContactInformation (){
+       return contactInformation.getText();
     }
-}
+
+    public MyAccountPage fillFirstNameInputField(String value) {
+        context.wait.until(ExpectedConditions.elementToBeClickable(firstNameInputField));
+        firstNameInputField.clear();
+        firstNameInputField.sendKeys(value);
+        return this;
+    }
+
+    public MyAccountPage fillLastNameInputField(String value) {
+        context.wait.until(ExpectedConditions.elementToBeClickable(lastNameInputField));
+        lastNameInputField.clear();
+        lastNameInputField.sendKeys(value);
+        return this;
+    }
+    }
+
+
+

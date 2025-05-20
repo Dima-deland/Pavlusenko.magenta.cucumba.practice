@@ -14,6 +14,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 public class DriverFactory {
+
     public static WebDriver get(Scenario scenario) throws URISyntaxException, MalformedURLException {
         WebDriver driver;
         String browser = ConfigurationReader.get("browser");

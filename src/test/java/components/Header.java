@@ -5,7 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.BasePage;
-import pages.CreateAccountPage;
 
 public class Header extends BasePage {
     public Header(TestContext context) {
@@ -20,20 +19,35 @@ public class Header extends BasePage {
     @FindBy(xpath = "//div[@class='panel header']/ul[@class='header links']//a[contains(@href, 'create')]")
     private WebElement createAnAccountLink;
 
+    @FindBy(xpath = "//span[@class='customer-name']//button[@class='action switch']")
+    public WebElement userOptionsButton;
+
+    @FindBy(xpath = "//div[@class='panel header']//ul[@class='header links']//li[@class='authorization-link']")
+    public WebElement signInLink;
+
+    @FindBy(xpath = "//li[@class='customer-welcome active']//li[@class='authorization-link']")
+    private WebElement signOutOption;
+
     //actions---------------------------------------------------------
 
     public int getCartCounterValue() {
-        if (!cartCounter.isDisplayed()) return 0;
-        context.wait.until(ExpectedConditions.visibilityOf(cartCounter));
+        context.wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(cartCounter)));
         String counterText = cartCounter.getText();
         return Integer.parseInt(counterText);
     }
 
-    public CreateAccountPage createAnAccountLinkClick() {
+    public Header createAnAccountLinkClick() {
         createAnAccountLink.click();
-        return new CreateAccountPage(context);
+        return this;
+    }
+
+    public Header clickUserOptionsButton (){
+        userOptionsButton.click();
+        return this;
+    }
+
+    public Header clickSignOutOption (){
+        signOutOption.click();
+        return this;
     }
 }
-
-
-

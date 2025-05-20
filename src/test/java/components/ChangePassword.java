@@ -3,12 +3,14 @@ package components;
 import context.TestContext;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.BasePage;
-import pages.LoginPage;
 
 public class ChangePassword extends BasePage {
     public ChangePassword(TestContext context) {
         super(context);
+
+        context.wait.until(ExpectedConditions.visibilityOf(title));
     }
 
     //elements---------------------------------------------------------
@@ -30,25 +32,25 @@ public class ChangePassword extends BasePage {
 
     //actions---------------------------------------------------------
 
-    public ChangePassword fillField(String fieldName, String value) {
-        switch (fieldName) {
-            case "currentPassword":
-                currentPasswordField.sendKeys(value);
-                break;
-            case "newPassword":
-                newPasswordField.sendKeys(value);
-                break;
-            case "confirmNewPassword":
-                confirmationPasswordField.sendKeys(value);
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown field: " + fieldName);
-        }
-        return new ChangePassword(context);
+    public ChangePassword fillCurrentPasswordField(String value) {
+        context.wait.until(ExpectedConditions.elementToBeClickable(currentPasswordField));
+        currentPasswordField.sendKeys(value);
+        return this;
     }
 
-    public LoginPage clickSaveButton() {
+    public ChangePassword fillNewPasswordField(String value) {
+        context.wait.until(ExpectedConditions.elementToBeClickable(newPasswordField));
+        newPasswordField.sendKeys(value);
+        return this;
+    }
+
+    public ChangePassword fillConfirmationPasswordField(String value) {
+        context.wait.until(ExpectedConditions.elementToBeClickable(confirmationPasswordField));
+        confirmationPasswordField.sendKeys(value);
+        return this;
+    }
+
+    public void clickSaveButton() {
         saveButton.click();
-        return new LoginPage(context);
     }
 }
