@@ -27,7 +27,7 @@ public class UserLoginSteps {
         loginPage
                 .fillEmailField(email)
                 .fillPasswordField(password);
-        step("Enter login and password");
+        step("Click Sign In button");
         loginPage
                 .clickSignInButton();
     }
