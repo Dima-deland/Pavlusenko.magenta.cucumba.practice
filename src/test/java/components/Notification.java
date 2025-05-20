@@ -20,7 +20,7 @@ public class Notification extends BasePage {
     //actions---------------------------------------------------------
 
     public String getNotificationText() {
-        // all notifications end with "."
+        // In project all notifications end with ".", so in this way program wait that message has text
         context.wait.until(ExpectedConditions.textToBePresentInElement(notification,"."));
         return notification.getText();
     }
