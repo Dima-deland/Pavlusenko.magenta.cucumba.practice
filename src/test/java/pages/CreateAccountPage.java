@@ -36,35 +36,30 @@ public class CreateAccountPage extends BasePage {
 
     public CreateAccountPage fillFirstNameField(String value) {
         context.wait.until(ExpectedConditions.elementToBeClickable(firstNameInputField));
-        firstNameInputField.clear();
         firstNameInputField.sendKeys(value);
         return this;
     }
 
     public CreateAccountPage fillLastNameField(String value) {
         context.wait.until(ExpectedConditions.elementToBeClickable(lastNameInputField));
-        lastNameInputField.clear();
         lastNameInputField.sendKeys(value);
         return this;
     }
 
     public CreateAccountPage fillEmailInputField(String value) {
         context.wait.until(ExpectedConditions.elementToBeClickable(emailInputField));
-        emailInputField.clear();
         emailInputField.sendKeys(value);
         return this;
     }
 
     public CreateAccountPage fillPasswordField(String value) {
         context.wait.until(ExpectedConditions.elementToBeClickable(passwordField));
-        passwordField.clear();
         passwordField.sendKeys(value);
         return this;
     }
 
     public CreateAccountPage fillConfirmPasswordField(String value) {
         context.wait.until(ExpectedConditions.elementToBeClickable(confirmPasswordField));
-        confirmPasswordField.clear();
         confirmPasswordField.sendKeys(value);
         return this;
     }
