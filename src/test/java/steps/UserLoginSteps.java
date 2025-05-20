@@ -52,11 +52,11 @@ public class UserLoginSteps {
     public void thatFieldIsRequiredIsShown(String expectedErrorMessage, String fieldName) {
         step("Check that error message is shown");
 
-        if (fieldName == "Email") {
+        if (fieldName.equals("Email")) {
             assertTrue(loginPage.emailFieldIsRequiredMessage.isDisplayed());
             assertFalse(loginPage.passwordFieldIsRequiredMessage.isDisplayed());
             assertEquals(expectedErrorMessage, loginPage.emailFieldIsRequiredMessage.getText());
-        } else if (fieldName == "Password") {
+        } else if (fieldName.equals("Password")) {
             assertTrue(loginPage.passwordFieldIsRequiredMessage.isDisplayed());
             assertFalse(loginPage.emailFieldIsRequiredMessage.isDisplayed());
             assertEquals(expectedErrorMessage, loginPage.passwordFieldIsRequiredMessage.getText());
